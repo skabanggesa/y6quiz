@@ -95,10 +95,12 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    color: black;
 }
 
 .option-btn:hover {
     background-color: #d6eaf8;
+    color: black;
 }
 
 .selected {
