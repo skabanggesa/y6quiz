@@ -237,7 +237,7 @@ function showQuizSection() {
             <h2>Quiz Result</h2>
             <div class="section-score">Section A: <span id="score-a">0</span>/30 correct</div>
             <div class="section-score">Section B: <span id="score-b">0</span>/20 correct</div>
-            <div class="score">Total score: <span id="total-score">0</span>/120</div>
+            <div class="score">Total score: <span id="total-score">0</span>/100</div>
             <div class="grade">Grade: <span id="grade-value">-</span></div>
             <div class="feedback" id="feedback"></div>
             <button class="try-again-btn">Try Again</button>
@@ -365,7 +365,7 @@ function startSectionB() {
     document.getElementById('sectionA').style.display = 'none';
     document.getElementById('sectionB').style.display = 'block';
     
-    selectedQuestionsB = [...sectionBSentences].sort(() => 0.5 - Math.random()).slice(0, 30);
+    selectedQuestionsB = [...sectionBSentences].sort(() => 0.5 - Math.random()).slice(0, 20);
     showQuestionB();
     
     document.getElementById('prev-btn-b').addEventListener('click', () => {
@@ -525,7 +525,7 @@ function sendResult() {
     else if (totalScore >= 20) grade = 'D (WEAK)';
     else grade = 'F (FAILED)';
     
-    const message = `English Quiz Result\nStudent: ${currentUser}\nSection A: ${scoreA}/30\nSection B: ${scoreB}/30\nTotal Score: ${totalScore}/120\nGrade: ${grade}`;
+    const message = `English Quiz Result\nStudent: ${currentUser}\nSection A: ${scoreA}/30\nSection B: ${scoreB}/20\nTotal Score: ${totalScore}/100\nGrade: ${grade}`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/60106607787?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
