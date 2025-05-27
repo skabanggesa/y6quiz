@@ -23,8 +23,28 @@ const users = {
     "NURNABILA": "13144824",
     "ARIANA": "13144866",
     "RASYA": "13144868",
-    "SHAFA": "13269636"
+    "SHAFA": "13269636",
+    
+    // New users from the image
+    "SYAZWAN": "14497683",
+    "DANIEL": "14186843",
+    "DAYYAN": "14186847",
+    "FAEYZA": "14186974",
+    "FAIQA": "14186976",
+    "AZWAR": "14186987",
+    "ARSYAD": "14187010",
+    "HABIB": "14187021",
+    "SHAHIRAH": "14187024",
+    "AIRIEN": "14187055",
+    "ALIYA": "14187058",
+    "QASRIENA": "14187069",
+    "FATIYYA": "14187077",
+    "ISMAHANI": "14188127",
+    "ARNEESA": "14188152",
+    "QAISARA": "14188158",
+    "PALLIQ": "14188163"
 };
+
 
 // Section A questions
 const sectionAQuestions = [
