@@ -342,38 +342,42 @@ function showQuestionA() {
 }
 
 // Smart answer checking for Section B
-function isAnswerAcceptable(userAnswer, correctSentence) {
-    // Normalize both sentences
+function isAnswerAcceptable(userAnswer, correctSentences) {
+    // Ensure correctSentences is an array
+    if (!Array.isArray(correctSentences)) {
+        correctSentences = [correctSentences];
+    }
+
+    // Normalize function: lowercase, remove punctuation, split into words
     const normalize = (str) => {
         return str.toLowerCase()
                  .replace(/[.,]/g, '')
-                 .split(' ')
-                 .filter(word => word.length > 0);
+                 .trim()
+                 .split(/\s+/); // split by any whitespace
     };
-    
+
     const userWords = normalize(userAnswer);
-    const correctWords = normalize(correctSentence);
-    
-    // Check if word counts match
-    if (userWords.length !== correctWords.length) {
-        return false;
-    }
-    
-    // Check for exact word set match (order doesn't matter)
-    const userWordSet = new Set(userWords);
-    const correctWordSet = new Set(correctWords);
-    
-    if (userWordSet.size !== correctWordSet.size) {
-        return false;
-    }
-    
-    for (const word of userWordSet) {
-        if (!correctWordSet.has(word)) {
-            return false;
+
+    // Loop through all acceptable correct answers
+    for (const correctSentence of correctSentences) {
+        const correctWords = normalize(correctSentence);
+
+        // If lengths don't match, skip this sentence
+        if (userWords.length !== correctWords.length) continue;
+
+        // Compare each word in order
+        let allMatch = true;
+        for (let i = 0; i < correctWords.length; i++) {
+            if (userWords[i] !== correctWords[i]) {
+                allMatch = false;
+                break;
+            }
         }
+
+        if (allMatch) return true; // found a correct match
     }
-    
-    return true;
+
+    return false; // no correct matches found
 }
 
 // Start Section B
